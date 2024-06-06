@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onsubmit</title>
+
+    <script>
+
+        function greet()
+        {
+            alert('hello, ' + document.querySelector('#name').value);
+        }
+
+    </script>
+</head>
+<body>
+
+    <!-- 
+        return false means do not perform the actual submission, stay on  page. 
+
+        it’s considered bad design to mix onsubmit and JavaScript. so use addEventListener
+        instead on the element.
+    -->
+        
+    <form onsubmit="greet(); return false;">
+        <input autocomplete="off" autofocus id="name" placeholder="Name" type="text">
+        <input type="submit">
+    </form>
+
+</body>
+</html>
