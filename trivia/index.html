@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            const correct = 'Correct!';
+            const incorrect = 'Incorrect!';
+
+
+            //create a question and answer object for free response questions.
+            // each key represents the id of a free response question.
+            let free_response_questions = {
+                'question_one': 'Montego Bay',
+                'question_two': '14',
+                'question_three': '1962',
+                'question_four': 'Kingston',
+                'question_five': 'Christopher Columbus',
+                'question_six': 'Ackee',
+                'question_seven': 'Bobsleigh',
+                'question_eight': 'Reggae',
+                'question_nine': 'Marcus Garvey',
+                'question_ten': 'One love',
+            }
+
+            // check for events only after all the HTML DOM has been loaded completely
+            document.addEventListener('DOMContentLoaded', function() {
+                // get all the correct buttons...
+                let correct_buttons = document.querySelectorAll('.correct');
+
+                // get all the incorrect buttons...
+                let incorrect_buttons = document.querySelectorAll('.incorrect');
+
+                // get all the buttons that check free response question answers...
+                let check_buttons = document.querySelectorAll('.check');
+
+                // get all the inputs in DOM
+                let inputs = document.querySelectorAll('input');
+
+
+                for (let i = 0; i < correct_buttons.length; i++) {
+                    let correct_button = correct_buttons[i];
+
+                    correct_button.addEventListener('click', function(e) {
+                        correct_button.style.backgroundColor = 'green';
+                        correct_button.style.color = 'white';
+                        correct_button.parentElement.querySelector('.response_message').innerHTML = correct;
+                    });
+                }
+
+                for (let i = 0; i < incorrect_buttons.length; i++) {
+                    let incorrect_button = incorrect_buttons[i];
+
+                    incorrect_button.addEventListener('click', function(e) {
+                        incorrect_button.style.backgroundColor = 'red';
+                        incorrect_button.style.color = 'white';
+                        incorrect_button.parentElement.querySelector('.response_message').innerHTML = incorrect;
+                    });
+                }
+
+                // handle free response questions.
+                for (let i = 0; i < check_buttons.length; i++) {
+                    let check_button = check_buttons[i];
+
+                    check_button.addEventListener('click', function(e) {
+
+                        // get the input value entered by the user
+                        let question_input = check_button.parentElement.querySelector('input');
+
+                        if (question_input.value.trim().toLowerCase() != "") {
+                            // get the id value for the h3 question element for each button
+                            let question = check_button.parentElement.querySelector('h3').id;
+
+                            // get the answer for question from the free response question and answer object
+                            // using the id value of the question h3 element
+                            let answer = free_response_questions[question];
+
+                            // compare answer and user_answer to see if they are the same
+                            if (answer.trim().toLowerCase() == question_input.value.trim().toLowerCase()) {
+                                check_button.parentElement.querySelector('.response_message').innerHTML = correct;
+                                question_input.style.backgroundColor = 'green';
+                                question_input.style.color = 'white';
+
+                                console.log('correct');
+                            } else {
+                                check_button.parentElement.querySelector('.response_message').innerHTML = correct;
+                                question_input.style.backgroundColor = 'red';
+                                question_input.style.color = 'white';
+                                check_button.parentElement.querySelector('.response_message').innerHTML = incorrect;
+
+                                console.log('incorrect');
+                            }
+                        } else {
+                            console.log('Enter Answer.');
+                            alert('Enter Answer.');
+                        }
+                    });
+                }
+
+                // reset each input to default if answer is removed - using the keyup event.
+                for (let i = 0; i < inputs.length; i++) {
+                    let input = inputs[i];
+
+                    input.addEventListener('keyup', function(e) {
+
+                        if (input.value.trim() == "") {
+                            input.style.backgroundColor = '#fff';
+                            input.style.color = '#000';
+                            input.parentElement.querySelector('.response_message').innerHTML = "";
+                        }
+                    });
+                }
+            });
+           
+        </script>
+    </head>
+
+    <body>
+        <div class="header sticky">
+            <h1>¡Trivia jamaicana!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <section class="question">
+                    <h3>What is Jamaica's national dish?</h3>
+                    <p class="response_message"></p>
+                    <button class="incorrect">Jerked Chicken</button>
+                    <button class="incorrect">Oxtail and Beans</button>
+                    <button class="correct">Ackee and Saltfish</button>
+                    <button class="incorrect">Curried Mutton and Rice</button>
+                </section>
+
+                <section class="question">
+                    <h3>What are the colors of the Jamaican Flag?</h3>
+                    <p class="response_message"></p>
+                    <button class="incorrect">Red,Green,Blue</button>
+                    <button class="correct">Black,Gold,Green</button>
+                    <button class="incorrect">Purple,Green,Blue</button>
+                    <button class="incorrect">Black,Green</button>
+                </section>
+
+                <section class="question">
+                    <h3>Who was Jamaica's first national hero?</h3>
+                    <p class="response_message"></p>
+                    <button class="incorrect">Bob Marley</button>
+                    <button class="incorrect">Paul Bogle</button>
+                    <button class="incorrect">Nanny of the Maroons</button>
+                    <button class="incorrect">Samuel Sharpe</button>
+                    <button class="correct">Marcus Garvey</button>
+                    <button class="incorrect">Usain Bolt</button>
+                </section>
+
+                <section class="question">
+                    <h3>Which of the following is ONE of Jamaica's MOST popular tourist attractions?</h3>
+                    <p class="response_message"></p>
+                    <button class="incorrect">Ackee and Saltfish</button>
+                    <button class="incorrect">Boston Jerk Center</button>
+                    <button class="correct">Dunn's River Falls</button>
+                    <button class="incorrect">Blue Mountain</button>
+                </section>
+
+            </div>
+
+
+            
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <section class="question">
+                    <h3 id="question_one">Which city was officially named Jamaica's second city in 1981?</h3>
+                    <p class="response_message"></p>
+                    <input autofocus placeholder="answer" type="text" />
+                    <button class="check">Check Answer</button>
+                </section>
+
+                <section class="question">
+                    <h3 id="question_two">How many Parishes does Jamaica have?</h3>
+                    <p class="response_message"></p>
+                    <input autofocus placeholder="answer" type="text" />
+                    <button class="check">Check Answer</button>
+                </section>
+
+                <section class="question">
+                    <h3 id="question_three">Jamaica became independent from the United Kingdom in which year?</h3>
+                    <p class="response_message"></p>
+                    <input autofocus placeholder="answer" type="text" />
+                    <button class="check">Check Answer</button>
+                </section>
+
+                <section class="question">
+                    <h3 id="question_four">Name the national capital of Jamaica?</h3>
+                    <p class="response_message"></p>
+                    <input autofocus placeholder="answer" type="text" />
+                    <button class="check">Check Answer</button>
+                </section>
+
+                <section class="question">
+                    <h3 id="question_five">Who first sighted the island in 1494, and called it Santiago?</h3>
+                    <p class="response_message"></p>
+                    <input autofocus placeholder="answer" type="text" />
+                    <button class="check">Check Answer</button>
+                </section>
+
+                <section class="question">
+                    <h3 id="question_six">What is the national fruit of Jamaica, which is also prepared with salted codfish to make the Jamaican national dish?</h3>
+                    <p class="response_message"></p>
+                    <input autofocus placeholder="answer" type="text" />
+                    <button class="check">Check Answer</button>
+                </section>
+
+                <section class="question">
+                    <h3 id="question_seven">In 1988, Jamaica participated in the Calgary Winter Olympics in which event?</h3>
+                    <p class="response_message"></p>
+                    <input autofocus placeholder="answer" type="text" />
+                    <button class="check">Check Answer</button>
+                </section>
+
+                <section class="question">
+                    <h3 id="question_eight">Which music genre originated in Jamaica in the late 1960s?</h3>
+                    <p class="response_message"></p>
+                    <input autofocus placeholder="answer" type="text" />
+                    <button class="check">Check Answer</button>
+                </section>
+
+                <section class="question">
+                    <h3 id="question_nine">A statue of which political activist stands in Saint Ann\'s Bay, the town where he was born?</h3>
+                    <p class="response_message"></p>
+                    <input autofocus placeholder="answer" type="text" />
+                    <button class="check">Check Answer</button>
+                </section>
+
+                <section class="question">
+                    <h3 id="question_ten">Which Bob Marley song has been featured in Jamaica Tourist Board television advertisements since 1994?</h3>
+                    <p class="response_message"></p>
+                    <input autofocus placeholder="answer" type="text" />
+                    <button class="check">Check Answer</button>
+                </section>
+            </div>
+        </div>
+    </body>
+
+</html>
