@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+
+    <script>
+
+        // DOMContentLoaded event ensures that the whole page (all DOM objects) is 
+        // loaded before executing the JavaScript
+        document.addEventListener('DOMContentLoaded', function(){
+
+            // get the form from the DOM
+            let form = document.querySelector('form');
+
+            // listen for submit event on the form.
+            form.addEventListener('submit', function(e){
+
+                // get the input field from DOM using its id, then concate
+                // value to hello.
+                alert('hello, ' + document.querySelector('#name').value);
+                e.preventDefault(); // prevent form from doing actual submission.
+
+            });
+        });
+
+    </script>
+    
+</head>
+<body>
+
+    <form>
+        <input autocomplete="off" autofocus id="name" placeholder="Name" type="text">
+        <input type="submit">
+    </form>
+    
+</body>
+</html>
