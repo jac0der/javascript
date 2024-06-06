@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blink</title>
+
+    <script>
+
+        // Toggles visibility of text
+        function blink()
+        {
+            // get body from DOM
+            let body = document.querySelector('body');
+
+            // check the visibility of body, and set opposite visibility value.
+            if(body.style.visibility == 'hidden')
+            {
+                body.style.visibility = 'visible';
+            }
+            else
+            {
+                body.style.visibility = 'hidden';
+            }           
+        }
+
+        // blink every 500ms
+        window.setInterval(blink, 500);
+
+    </script>
+
+</head>
+<body>
+    <h1>Blink Text</h1>
+</body>
+</html>
