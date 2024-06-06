@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>body color</title>
+
+    <script>
+
+        /*
+            dynamically read and modify the html document loaded into memory such that 
+            the user need not reload to see changes.
+
+            Register click events to all the buttons. Once a button is clicked, change
+            the background color for the body of page.
+        */
+
+        document.addEventListener('DOMContentLoaded', function(){
+
+            let body = document.querySelector('body');
+
+            document.querySelector('#red').addEventListener('click', function() {
+                body.style.backgroundColor = 'red';
+            });
+
+            document.querySelector('#green').addEventListener('click', function() {
+                body.style.backgroundColor = 'green';
+            });
+
+            document.querySelector('#blue').addEventListener('click', function() {
+                body.style.backgroundColor = 'blue';
+            });
+
+        });
+
+    </script>
+
+    
+</head>
+<body>
+
+    <button id="red">R</button>
+    <button id="green">G</button>
+    <button id="blue">B</button>
+    
+</body>
+</html>
