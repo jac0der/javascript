@@ -50,27 +50,27 @@ function isMultiple(dividend, divisor)
 function fizzBuzz()
 {
     for(let i = 1; i<= 100; i++)
+    {
+        // check if i is both a multiple of 3 AND 5
+        if( (isMultiple(i, MULT3)) && (isMultiple(i,MULT5)) )
         {
-            // check if i is both a multiple of 3 AND 5
-            if( (isMultiple(i, MULT3)) && (isMultiple(i,MULT5)) )
-            {
-                console.log("FizzBuzz");
-            }
-            // check if i is multiple of 3
-            else if(isMultiple(i, MULT3))
-            {
-                console.log("Fizz");
-            }
-            // check if i is multiple of 5
-            else if(isMultiple(i, MULT5))
-            {
-                console.log("Buzz");
-            }
-            else // no multiple found, print number
-            {
-                console.log(i);
-            }
+            console.log("FizzBuzz");
         }
+        // check if i is multiple of 3
+        else if(isMultiple(i, MULT3))
+        {
+            console.log("Fizz");
+        }
+        // check if i is multiple of 5
+        else if(isMultiple(i, MULT5))
+        {
+            console.log("Buzz");
+        }
+        else // no multiple found, print number
+        {
+            console.log(i);
+        }
+    }
 }
 
 
