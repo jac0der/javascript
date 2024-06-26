@@ -87,7 +87,7 @@ console.log(age); // Error! constant cannot be changed
 
 
 // constant declarations must be initialized or I get an Error.
-const g; // 'const' declarations must be initialized.ts(1155)
+//const g; // 'const' declarations must be initialized.ts(1155)
 
 
 /*
