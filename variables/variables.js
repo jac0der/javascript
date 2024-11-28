@@ -53,7 +53,7 @@ let x = y = z = 10;
 console.log(z);
 
 
-// If I use a variable without initializing, it will have an undevined value.
+// If I use a variable without initializing, it will have an undefined value.
 let num;
 console.log(num);
 // output: undefined
@@ -87,7 +87,7 @@ console.log(age); // Error! constant cannot be changed
 
 
 // constant declarations must be initialized or I get an Error.
-//const g; // 'const' declarations must be initialized.ts(1155)
+//const g; // 'const' declarations must be initialized.ts(1155) or // Error! Missing initializer in const declaration
 
 
 /*
