@@ -28,7 +28,7 @@
 let fruit = 'apple';
 console.log(fruit)
 
-// string enclosed within double quotes
+// string enclosed within double quotes (recomended)
 let country = "USA";
 console.log(country);
 
@@ -67,7 +67,7 @@ let value2 = 900719925124740998n;
 // In JavaScript, you can't mix BigInt and number values 
 // (for instance, by performing arithmetic operations between them).
 // BigInt value
-let value = 900719925124740998n;;
+let value = 900719925124740998n;
 
 // Error! BitInt and number cannot be added
 // -> let sum = value + 1; 
@@ -147,4 +147,5 @@ let student = {
     lastName: null,
     class: 10
 };
+// accessing properties of an object
 console.log(student.class + ' ' + student.firstName);
